@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Breathe with Mom</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1eefb;--ink:#2b2750;--soft:#6a6590;--halo:#b9a9f0;--halo2:#e3dcff;--card:#ffffff;--accent:#5b4bc4;--accent-ink:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1a3a;--ink:#f1eefb;--soft:#aaa5d4;--halo:#6f5fd0;--halo2:#2d2a5c;--card:#2a2756;--accent:#c7bcff;--accent-ink:#1c1a3a}}
+:root[data-theme="dark"]{--bg:#1c1a3a;--ink:#f1eefb;--soft:#aaa5d4;--halo:#6f5fd0;--halo2:#2d2a5c;--card:#2a2756;--accent:#c7bcff;--accent-ink:#1c1a3a}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*:before,*:after{box-sizing:border-box}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;display:flex;flex-direction:column;align-items:center;padding:20px 16px 28px}
+h1{font-size:1.5rem;font-weight:800;margin:4px 0 2px;text-align:center}
+.sub{color:var(--soft);margin:0 0 10px;text-align:center;font-size:.98rem}
+.stage{position:relative;width:min(340px,92vw);aspect-ratio:300/340}
+svg{width:100%;height:100%;display:block;overflow:visible}
+.say{min-height:2.6em;text-align:center;font-size:1.25rem;font-weight:600;max-width:20em;margin:4px 0 0}
+.count{font-size:2.4rem;font-weight:800;line-height:1;margin:6px 0 0;color:var(--accent);min-height:1em}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:16px 0 4px}
+button{font:inherit;cursor:pointer;border-radius:999px;border:2px solid var(--halo);background:var(--card);color:var(--ink);padding:9px 16px;font-weight:600}
+button[aria-pressed="true"]{background:var(--halo2);border-color:var(--accent)}
+button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.go{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-size:1.15rem;font-weight:800;padding:13px 40px;margin-top:10px}
+.snd{display:flex;align-items:center;gap:10px;margin-top:10px;color:var(--soft);font-size:.9rem}
+input[type=range]{accent-color:var(--accent);width:120px}
+.meta{color:var(--soft);font-size:.9rem;margin-top:12px;text-align:center}
+</style>
+</head>
+<body>
+<h1>Breathe with Mom</h1>
+<p class="sub">Follow along. Nothing to fix right now.</p>
+
+<div class="stage" role="img" aria-label="An animated mom breathing slowly, with her hand on her heart">
+<svg viewBox="0 0 300 340">
+  <circle id="halo2" cx="150" cy="190" r="140" fill="var(--halo2)"/>
+  <circle id="halo" cx="150" cy="190" r="110" fill="var(--halo)" opacity=".55"/>
+  <!-- long hair behind -->
+  <path d="M96 120 C80 190 84 250 96 282 L204 282 C216 250 220 190 204 120 C190 60 110 60 96 120Z" fill="#6b3f26"/>
+  <!-- body (breathes) -->
+  <g id="body" style="transform-origin:150px 330px">
+    <path d="M44 340 C44 270 88 236 150 236 C212 236 256 270 256 340 Z" fill="#f4a6c0"/>
+    <path d="M108 262 L192 262 L198 340 L102 340 Z" fill="#5b86c9"/>
+    <path d="M108 262 L118 238 L130 240 L124 262Z M192 262 L182 238 L170 240 L176 262Z" fill="#4a73b3"/>
+    <circle cx="124" cy="270" r="4" fill="#f6cf3d"/><circle cx="176" cy="270" r="4" fill="#f6cf3d"/>
+    <path d="M122 238 C132 256 168 256 178 238 L168 230 L132 230 Z" fill="#f1c7a5"/>
+    <path d="M62 332 C52 288 80 252 122 268 C136 274 146 282 146 292" fill="none" stroke="#f4a6c0" stroke-width="30" stroke-linecap="round"/>
+    <path d="M238 332 C248 288 220 252 178 268 C164 274 154 282 154 292" fill="none" stroke="#f4a6c0" stroke-width="30" stroke-linecap="round"/>
+    <circle id="heart" cx="150" cy="288" r="22" fill="#ff8fa8" opacity="0"/>
+    <circle cx="140" cy="292" r="12" fill="#f1c7a5"/><circle cx="160" cy="292" r="12" fill="#f1c7a5"/>
+  </g>
+  <!-- head -->
+  <g id="head" style="transform-origin:150px 200px">
+    <rect x="138" y="196" width="24" height="42" rx="10" fill="#e9b794"/>
+    <ellipse cx="150" cy="140" rx="46" ry="54" fill="#f1c7a5"/>
+    <path d="M102 138 C96 80 204 80 198 138 C190 112 170 98 150 98 C128 98 110 112 102 138Z" fill="#7b4b2e"/>
+    <path d="M100 130 C92 190 92 240 104 276 C112 240 110 190 112 150Z M200 130 C208 190 208 240 196 276 C188 240 190 190 188 150Z" fill="#7b4b2e"/>
+    <g fill="none" stroke-width="3.2"><path d="M101 113 Q150 68 199 113" stroke="#e5484d"/><path d="M101 116 Q150 71 199 116" stroke="#f58a3a"/><path d="M101 119 Q150 74 199 119" stroke="#f6cf3d"/><path d="M101 122 Q150 77 199 122" stroke="#4cb86a"/><path d="M101 125 Q150 80 199 125" stroke="#3d8fe0"/><path d="M101 129 Q150 84 199 129" stroke="#8a5cd6"/></g>
+    <ellipse cx="129" cy="158" rx="9" ry="6" fill="#ff9aa8" opacity=".5"/>
+    <ellipse cx="171" cy="158" rx="9" ry="6" fill="#ff9aa8" opacity=".5"/>
+    <path d="M120 130 Q130 125 140 130 M160 130 Q170 125 180 130" fill="none" stroke="#6b3f26" stroke-width="3" stroke-linecap="round"/>
+    <path d="M121 142 Q130 151 139 142 M161 142 Q170 151 179 142" fill="none" stroke="#3b2a2f" stroke-width="3" stroke-linecap="round"/>
+    <path d="M121 142 l-4 -3 M139 142 l4 -3 M161 142 l-4 -3 M179 142 l4 -3" stroke="#3b2a2f" stroke-width="2" stroke-linecap="round"/>
+    <path d="M148 154 Q150 158 153 155" fill="none" stroke="#d9a07f" stroke-width="2.5" stroke-linecap="round"/>
+    <path id="smile" d="M134 168 Q150 184 166 168" fill="none" stroke="#c4566a" stroke-width="3.5" stroke-linecap="round"/>
+    <ellipse id="pursed" cx="150" cy="172" rx="5" ry="4" fill="#c4566a" opacity="0"/>
+  </g>
+</svg>
+</div>
+
+<div class="count" id="count" aria-hidden="true"></div>
+<p class="say" id="say" aria-live="polite">Ready when you are.</p>
+
+<button class="go" id="go">Start</button>
+
+<div class="row" role="group" aria-label="Breathing pattern">
+  <button data-p="calm" aria-pressed="true">Calm 4 – 6</button>
+  <button data-p="478" aria-pressed="false">Deep 4 – 7 – 8</button>
+  <button data-p="box" aria-pressed="false">Box 4 – 4 – 4 – 4</button>
+</div>
+<div class="snd"><button id="snd" aria-pressed="true">Sound bath: on</button><label>Volume <input type="range" id="vol" min="0" max="100" value="60" aria-label="Volume"></label></div>
+<p class="meta" id="meta">Breaths: 0</p>
+
+<script>
+var PATTERNS={
+  calm:[{n:'Breathe in',d:4,a:0,b:1,t:'Fill your belly, like I am.'},{n:'Breathe out',d:6,a:1,b:0,t:'Let it go slowly. You are safe.'}],
+  '478':[{n:'Breathe in',d:4,a:0,b:1,t:'In through your nose.'},{n:'Hold',d:7,a:1,b:1,t:'Hold it gently. Soft shoulders.'},{n:'Breathe out',d:8,a:1,b:0,t:'Long and slow, like a sigh.'}],
+  box:[{n:'Breathe in',d:4,a:0,b:1,t:'Up one side of the box.'},{n:'Hold',d:4,a:1,b:1,t:'Across the top. Stay steady.'},{n:'Breathe out',d:4,a:1,b:0,t:'Down the other side.'},{n:'Rest',d:4,a:0,b:0,t:'Rest at the bottom. You are okay.'}]
+};
+var $=function(i){return document.getElementById(i)};
+var cur='calm',running=false,start=0,breaths=0,lastIdx=-1,raf=0;
+var body=$('body'),head=$('head'),halo=$('halo'),halo2=$('halo2'),heart=$('heart'),smile=$('smile'),pursed=$('pursed');
+
+function ease(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2}
+function draw(p,phaseName){
+  body.style.transform='scale('+(1+0.07*p)+')';
+  head.style.transform='translateY('+(-6*p)+'px)';
+  halo.style.transform='scale('+(0.88+0.3*p)+')';halo.style.transformOrigin='150px 190px';
+  halo2.style.transform='scale('+(0.94+0.12*p)+')';halo2.style.transformOrigin='150px 190px';
+  heart.setAttribute('opacity',(0.15+0.45*p).toFixed(2));
+  var out=phaseName==='Breathe out';
+  smile.setAttribute('opacity',out?0:1);pursed.setAttribute('opacity',out?1:0);
+}
+function tick(now){
+  if(!running)return;
+  var pat=PATTERNS[cur],total=pat.reduce(function(s,x){return s+x.d},0);
+  var t=((now-start)/1000)%total,acc=0,idx=0;
+  for(idx=0;idx<pat.length;idx++){if(t<acc+pat[idx].d)break;acc+=pat[idx].d}
+  var ph=pat[idx],f=(t-acc)/ph.d;
+  draw(ph.a+(ph.b-ph.a)*ease(f),ph.n);
+  $('count').textContent=Math.ceil(ph.d-(t-acc));
+  if(idx!==lastIdx){
+    $('say').textContent=ph.n+'. '+ph.t;lastIdx=idx;phaseSound(ph.n);
+    if(idx===0&&Math.floor((now-start)/1000)>=total){breaths++;$('meta').textContent='Breaths: '+breaths}
+  }
+  raf=requestAnimationFrame(tick);
+}
+
+/* ---- sound bath (synthesized, no downloads) ---- */
+var ac,master,bus,drone=null,soundOn=true;
+function initAudio(){
+  if(ac){if(ac.state==='suspended')ac.resume();return}
+  try{
+    ac=new (window.AudioContext||window.webkitAudioContext)();
+    master=ac.createGain();master.gain.value=$('vol').value/100;master.connect(ac.destination);
+    bus=ac.createGain();bus.connect(master);
+    var len=ac.sampleRate*3,buf=ac.createBuffer(2,len,ac.sampleRate);
+    for(var c=0;c<2;c++){var d=buf.getChannelData(c);for(var i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,2.5)}
+    var conv=ac.createConvolver();conv.buffer=buf;var wet=ac.createGain();wet.gain.value=.7;
+    bus.connect(conv);conv.connect(wet);wet.connect(master);
+  }catch(e){ac=null}
+}
+function bowl(f,dur,vol){
+  if(!ac||!soundOn)return;var t=ac.currentTime;
+  [[1,.5],[2.76,.22],[5.4,.08]].forEach(function(pr){
+    [0,1.6].forEach(function(det){
+      var o=ac.createOscillator(),g=ac.createGain();
+      o.type='sine';o.frequency.value=f*pr[0]+det;
+      g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(pr[1]*vol,t+.04);
+      g.gain.exponentialRampToValueAtTime(0.0001,t+dur/pr[0]*(pr[0]>1?1.2:1));
+      o.connect(g);g.connect(bus);o.start(t);o.stop(t+dur+.5);
+    });
+  });
+}
+function startDrone(){
+  if(!ac||!soundOn||drone)return;var t=ac.currentTime;
+  var g=ac.createGain();g.gain.setValueAtTime(0.0001,t);g.gain.linearRampToValueAtTime(.09,t+4);g.connect(bus);
+  var lfo=ac.createOscillator(),lg=ac.createGain();lfo.frequency.value=.12;lg.gain.value=.03;lfo.connect(lg);lg.connect(g.gain);lfo.start();
+  var oscs=[98,147,196.5,293.7].map(function(f,i){var o=ac.createOscillator();o.type='sine';o.frequency.value=f+(i%2?.6:-.4);var og=ac.createGain();og.gain.value=i>1?.35:1;o.connect(og);og.connect(g);o.start();return o});
+  drone={g:g,oscs:oscs.concat([lfo])};
+}
+function stopDrone(){
+  if(!drone||!ac)return;var d=drone,t=ac.currentTime;drone=null;
+  d.g.gain.cancelScheduledValues(t);d.g.gain.setValueAtTime(Math.max(d.g.gain.value,.0001),t);d.g.gain.linearRampToValueAtTime(0.0001,t+2);
+  setTimeout(function(){d.oscs.forEach(function(o){try{o.stop()}catch(e){}})},2200);
+}
+function phaseSound(n){
+  if(n==='Breathe in')bowl(293.7,7,.9);
+  else if(n==='Hold')bowl(440,5,.35);
+  else if(n==='Breathe out')bowl(196,10,1);
+  else bowl(261.6,5,.4);
+}
+$('snd').onclick=function(){
+  soundOn=!soundOn;this.setAttribute('aria-pressed',soundOn);this.textContent='Sound bath: '+(soundOn?'on':'off');
+  if(!soundOn)stopDrone();else if(running){initAudio();startDrone()}
+};
+$('vol').oninput=function(){if(master)master.gain.value=this.value/100};
+function begin(){initAudio();startDrone();running=true;start=performance.now();lastIdx=-1;$('go').textContent='Pause';raf=requestAnimationFrame(tick)}
+function pause(){stopDrone();running=false;cancelAnimationFrame(raf);$('go').textContent='Start';$('say').textContent='Paused. Take your time.';$('count').textContent=''}
+$('go').onclick=function(){running?pause():begin()};
+document.querySelectorAll('[data-p]').forEach(function(b){
+  b.onclick=function(){
+    cur=b.dataset.p;
+    document.querySelectorAll('[data-p]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+    breaths=0;$('meta').textContent='Breaths: 0';
+    if(running){start=performance.now();lastIdx=-1}
+  };
+});
+draw(0,'');
+</script>
+</body>
+</html>
